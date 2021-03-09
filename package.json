@@ -1,0 +1,38 @@
+{
+  "name": "@room-project/rpc-core",
+  "version": "0.1.0",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "cleanup": "rm -fr build",
+    "build": "npm run cleanup && tsc",
+    "dev": "npm run cleanup && tsc --watch",
+    "docs:cleanup": "rm -fr docs",
+    "docs:build": "npm run docs:cleanup && typedoc --excludeExternals --hideGenerator --readme none --out ./docs ./src/index.ts",
+    "docs:open": "open docs/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/room-project/rpc-core.git"
+  },
+  "author": "Dmitry Dudin <dima.dudin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/room-project/rpc-core/issues"
+  },
+  "homepage": "https://github.com/room-project/rpc-core#readme",
+  "devDependencies": {
+    "effector": "21.8.4",
+    "typedoc": "0.20.29",
+    "typescript": "4.2.3"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true
+  }
+}
