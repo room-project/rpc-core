@@ -68,3 +68,30 @@ export interface IRpcClientFactory {
   ): IRpcClient<S, T>
   of: IRpcClientFactory
 }
+
+// Server Transport
+
+export interface IRpcServerTransport {
+    handle: Effect<string, string | null>
+    open?: () => Promise<void>
+    close?: () => Promise<void>
+}
+
+// Server
+
+export interface IRpcServer<S, T> {
+    readonly service: S
+    readonly transport: T
+}
+
+export interface IRpcServerFactoryOptions<S, T> {
+    service: S
+    transport: T
+}
+
+export interface IRpcServerFactory {
+  <S extends IRpcService, T extends IRpcServerTransport>(
+    options: IRpcServerFactoryOptions<S, T>
+  ): IRpcServer<S, T>
+    of: IRpcServerFactory
+}
