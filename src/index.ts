@@ -9,7 +9,7 @@ export const createUUIDv4 = () => new UUID(4)
 
 export type RpcMessageId = string | number
 export type RpcMessageName = string
-export type RpcMessageParams = object
+export type RpcMessageParams = object | void
 export type RpcMessageResult = any
 
 export interface IRpcMessageError {
