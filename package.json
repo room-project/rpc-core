@@ -6,7 +6,6 @@
     "build"
   ],
   "scripts": {
-    "prepublish": "npm run build",
     "cleanup": "rm -fr build",
     "build": "npm run cleanup && tsc",
     "dev": "npm run cleanup && tsc --watch",
