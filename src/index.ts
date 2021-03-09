@@ -1,4 +1,9 @@
 import { Domain, Effect } from 'effector'
+import UUID from 'pure-uuid'
+
+export { UUID }
+
+export const createUUIDv4 = () => new UUID(4)
 
 // Protocol
 

@@ -34,5 +34,8 @@
     "useTabs": false,
     "semi": false,
     "singleQuote": true
+  },
+  "dependencies": {
+    "pure-uuid": "1.6.2"
   }
 }
