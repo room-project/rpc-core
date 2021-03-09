@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/room-project/rpc-core#readme",
   "devDependencies": {
-    "effector": "21.8.4",
-    "typedoc": "0.20.29",
+    "effector": "21.8.5",
+    "typedoc": "0.20.30",
     "typescript": "4.2.3"
   },
   "prettier": {
