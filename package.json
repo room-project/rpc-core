@@ -1,13 +1,17 @@
 {
   "name": "@room-project/rpc-core",
   "version": "0.4.0",
-  "main": "build/index.js",
+  "main": "build/index.cjs.js",
+  "module": "build/index.esm.js",
+  "types": "build/types/index.d.ts",
   "files": [
     "build"
   ],
   "scripts": {
     "cleanup": "rm -fr build",
-    "build": "npm run cleanup && tsc",
+    "build": "npm run cleanup && npm run build:types && npm run build:js",
+    "build:js": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
     "dev": "npm run cleanup && tsc --watch",
     "docs:cleanup": "rm -fr docs",
     "docs:build": "npm run docs:cleanup && typedoc --excludeExternals --hideGenerator --readme none --out ./docs ./src/index.ts",
@@ -24,7 +28,11 @@
   },
   "homepage": "https://github.com/room-project/rpc-core#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "17.1.0",
+    "@rollup/plugin-node-resolve": "11.2.0",
+    "@rollup/plugin-typescript": "8.2.0",
     "effector": "21.8.5",
+    "rollup-plugin-terser": "7.0.2",
     "typedoc": "0.20.30",
     "typescript": "4.2.3"
   },
