@@ -44,8 +44,8 @@ export interface IRpcService {
 
 export interface IRpcClientTransport {
   send: Effect<string, string | null>
-  open?: Effect<void, void>
-  close?: Effect<void, void>
+  open: Effect<any, any>
+  close: Effect<any, any>
 }
 
 // Client
@@ -72,8 +72,8 @@ export interface IRpcClientFactory {
 export interface IRpcServerTransport {
   receive: Event<IRpcRequest>
   send: Event<IRpcResponse>
-  open?: Effect<void, void>
-  close?: Effect<void, void>
+  open: Effect<any, any>
+  close: Effect<any, any>
 }
 
 // Server
