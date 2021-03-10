@@ -1,4 +1,4 @@
-import { Domain, Effect, Event } from 'effector'
+import { Domain, Effect } from 'effector'
 import UUID from 'pure-uuid'
 
 export const createUUIDv4 = () => new UUID(4)
@@ -65,32 +65,4 @@ export interface IRpcClientFactory {
     options: IRpcClientFactoryOptions<S, T>
   ): IRpcClient<S, T>
   of: IRpcClientFactory
-}
-
-// Server Transport
-
-export interface IRpcServerTransport {
-  receive: Event<IRpcRequest>
-  send: Event<IRpcResponse>
-  open: Effect<any | void, any | void>
-  close: Effect<any | void, any | void>
-}
-
-// Server
-
-export interface IRpcServer<S, T> {
-  readonly service: S
-  readonly transport: T
-}
-
-export interface IRpcServerFactoryOptions<S, T> {
-  service: S
-  transport: T
-}
-
-export interface IRpcServerFactory {
-  <S extends IRpcService, T extends IRpcServerTransport>(
-    options: IRpcServerFactoryOptions<S, T>
-  ): IRpcServer<S, T>
-  of: IRpcServerFactory
 }
