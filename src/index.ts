@@ -1,6 +1,10 @@
 import { Domain, Effect } from 'effector'
 import UUID from 'pure-uuid'
 
+import { version } from '../package.json'
+
+export const VERSION = version
+
 export const createUUIDv4 = () => new UUID(4)
 
 // Protocol
