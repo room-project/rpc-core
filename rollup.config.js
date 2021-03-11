@@ -8,6 +8,8 @@ import pkg from './package.json'
 const input = 'src/index.ts'
 const plugins = [resolve(), typescript(), commonjs(), terser({ output: { comments: false } })]
 
+const external = ['pure-uuid']
+
 export default [
   {
     input,
@@ -17,6 +19,7 @@ export default [
       sourcemap: true,
     },
     plugins,
+    external,
   },
   {
     input,
@@ -26,5 +29,6 @@ export default [
       sourcemap: true,
     },
     plugins,
+    external,
   },
 ]
