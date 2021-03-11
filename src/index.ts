@@ -7,12 +7,13 @@ export const createUUIDv4 = () => new UUID(4)
 
 export type RpcMessageId = string | number
 export type RpcMessageName = string
-export type RpcMessageParams = any
+export type RpcMessageParams = void | any
 export type RpcMessageResult = any
 
 export interface IRpcMessageError {
   message: string
-  code?: number | null
+  type?: string
+  code?: number
 }
 
 export interface IRpcRequest {
@@ -38,31 +39,4 @@ export interface IRpcServiceMethods {
 export interface IRpcService {
   domain: Domain
   methods: IRpcServiceMethods
-}
-
-// Client Transport
-
-export interface IRpcClientTransport {
-  send: Effect<string, string | null>
-  open: Effect<any | void, any | void>
-  close: Effect<any | void, any | void>
-}
-
-// Client
-
-export interface IRpcClient<S, T> {
-  readonly service: S
-  readonly transport: T
-}
-
-export interface IRpcClientFactoryOptions<S, T> {
-  service: S
-  transport: T
-}
-
-export interface IRpcClientFactory {
-  <T extends IRpcClientTransport, S extends IRpcService>(
-    options: IRpcClientFactoryOptions<S, T>
-  ): IRpcClient<S, T>
-  of: IRpcClientFactory
 }

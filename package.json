@@ -27,11 +27,16 @@
     "url": "https://github.com/room-project/rpc-core/issues"
   },
   "homepage": "https://github.com/room-project/rpc-core#readme",
+  "dependencies": {
+    "pure-uuid": "1.6.2"
+  },
+  "peerDependencies": {
+    "effector": "21.8.5"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
     "@rollup/plugin-node-resolve": "11.2.0",
     "@rollup/plugin-typescript": "8.2.0",
-    "effector": "21.8.5",
     "rollup-plugin-terser": "7.0.2",
     "typedoc": "0.20.30",
     "typescript": "4.2.3"
@@ -42,8 +47,5 @@
     "useTabs": false,
     "semi": false,
     "singleQuote": true
-  },
-  "dependencies": {
-    "pure-uuid": "1.6.2"
   }
 }
