@@ -24,39 +24,34 @@ export interface IRpcMethodError {
   code?: number
 }
 
-export interface IRpcRequest {
+export interface IRpcMessageMethodRequest {
   id: RpcMethodId
   name: RpcMethodName
   params: RpcMethodParams
 }
 
-export interface IRpcResponse {
+export interface IRpcMessageMethodResponse {
   id: RpcMethodId
   result?: RpcMethodResult
   error?: IRpcMethodError
 }
 
-export interface IRpcEvent {
+export interface IRpcMessageEvent {
   id: RpcEventId
   name: RpcEventName
-  payload: RpcEventPayload
+  payload?: RpcEventPayload
 }
 
 // Service
 
-export type IRpcServiceMethod = Effect<RpcMethodParams, RpcMethodResult, Error>
-export type IRpcServiceEvent = Event<RpcEventPayload>
+export type RpcServiceMethod = Effect<RpcMethodParams, RpcMethodResult, Error>
+export type RpcServiceEvent = Event<RpcEventPayload>
 
-export interface IRpcServiceMethods {
-  [key: string]: IRpcServiceMethod
-}
-
-export interface IRpcServiceEvents {
-  [key: string]: IRpcServiceEvent
-}
+export type RpcServiceMethods = Record<string, RpcServiceMethod>
+export type RpcServiceEvents = Record<string, RpcServiceEvent>
 
 export interface IRpcService {
   domain: Domain
-  methods?: IRpcServiceMethods
-  events?: IRpcServiceEvents
+  methods?: RpcServiceMethods
+  events?: RpcServiceEvents
 }
