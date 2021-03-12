@@ -16,10 +16,7 @@ const plugins = [
   terser({ output: { comments: false } }),
 ]
 
-const external = [
-  ...Object.keys(pkg.dependencies),
-  ...Object.keys(pkg.peerDependencies)
-]
+const external = [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)]
 
 export default [
   {
