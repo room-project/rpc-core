@@ -31,7 +31,7 @@
     "pure-uuid": "1.6.2"
   },
   "peerDependencies": {
-    "effector": "21.8.5"
+    "effector": "21.8.6"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
