@@ -3,18 +3,21 @@
   "version": "0.8.1",
   "main": "build/index.cjs.js",
   "module": "build/index.esm.js",
-  "types": "build/types/index.d.ts",
+  "types": "types/index.d.ts",
   "files": [
-    "build"
+    "build",
+    "types"
   ],
   "scripts": {
-    "cleanup": "rm -fr build",
-    "build": "npm run cleanup && npm run build:types && npm run build:js",
-    "build:js": "rollup -c",
-    "build:types": "tsc --emitDeclarationOnly",
     "dev": "npm run cleanup && tsc --watch",
+    "cleanup": "npm run js:cleanup && npm run types:cleanup",
+    "build": "npm run cleanup && npm run types:build && npm run js:build",
+    "js:cleanup": "rm -fr build",
+    "js:build": "rollup -c",
+    "types:cleanup": "rm -fr types",
+    "types:build": "tsc --emitDeclarationOnly",
     "docs:cleanup": "rm -fr docs",
-    "docs:build": "npm run docs:cleanup && typedoc --excludeExternals --hideGenerator --readme none --out ./docs ./src/index.ts",
+    "docs:build": "npm run docs:cleanup && typedoc --excludeExternals --hideGenerator --readme ./README.md --out ./docs ./src/index.ts",
     "docs:open": "open docs/index.html"
   },
   "repository": {
@@ -31,7 +34,7 @@
     "pure-uuid": "1.6.2"
   },
   "peerDependencies": {
-    "effector": "21.8.6"
+    "effector": "21.8.10"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
@@ -39,7 +42,7 @@
     "@rollup/plugin-node-resolve": "11.2.0",
     "@rollup/plugin-typescript": "8.2.0",
     "rollup-plugin-terser": "7.0.2",
-    "typedoc": "0.20.30",
+    "typedoc": "0.20.33",
     "typescript": "4.2.3"
   },
   "prettier": {
